@@ -105,6 +105,25 @@ public class CalcForm extends JFrame{
         minusButton.addActionListener(new OperationButtonActionListener("-"));
         umnogenieButton.addActionListener(new OperationButtonActionListener("*"));
         delenieButton.addActionListener(new OperationButtonActionListener("/"));
+        //клавиша равно
+        ravnoButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                number = 1;
+                isFinish = true;
+                aText = "";
+                bText = "";
+                if (operation.equals("+"))
+                    tabloField.setText(tabloField.getText() + "=" + (a+b));
+                if (operation.equals("-"))
+                    tabloField.setText(tabloField.getText() + "=" + (a-b));
+                if (operation.equals("*"))
+                    tabloField.setText(tabloField.getText() + "=" + (a*b));
+                if (operation.equals("/"))
+                    tabloField.setText(tabloField.getText() + "=" + (a/b));
+            }
+        });
+
 
 
     }
