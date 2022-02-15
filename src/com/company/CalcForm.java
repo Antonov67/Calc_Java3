@@ -86,6 +86,25 @@ public class CalcForm extends JFrame{
         a8Button.addActionListener(new NumberButtonActionListener("8"));
         a9Button.addActionListener(new NumberButtonActionListener("9"));
         a0Button.addActionListener(new NumberButtonActionListener("0"));
+        pointButton.addActionListener(new NumberButtonActionListener("."));
+        //клавиши операций
+        class OperationButtonActionListener implements ActionListener{
+            String operationText;
+            //конструктор
+            public OperationButtonActionListener(String operationText) {
+                this.operationText = operationText;
+            }
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                tabloField.setText(tabloField.getText() + operationText);
+                number = 2;
+                operation = operationText;
+            }
+        }
+        plusButton.addActionListener(new OperationButtonActionListener("+"));
+        minusButton.addActionListener(new OperationButtonActionListener("-"));
+        umnogenieButton.addActionListener(new OperationButtonActionListener("*"));
+        delenieButton.addActionListener(new OperationButtonActionListener("/"));
 
 
     }
