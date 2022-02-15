@@ -24,6 +24,7 @@ public class CalcForm extends JFrame{
     private JButton minusButton;
     private JButton CEButton;
     private JButton pointButton;
+    private JButton stepenButton;
     //наши переменные
     static String operation;
     static double a,b;
@@ -105,6 +106,7 @@ public class CalcForm extends JFrame{
         minusButton.addActionListener(new OperationButtonActionListener("-"));
         umnogenieButton.addActionListener(new OperationButtonActionListener("*"));
         delenieButton.addActionListener(new OperationButtonActionListener("/"));
+        stepenButton.addActionListener(new OperationButtonActionListener("^"));
         //клавиша равно
         ravnoButton.addActionListener(new ActionListener() {
             @Override
@@ -121,6 +123,8 @@ public class CalcForm extends JFrame{
                     tabloField.setText(tabloField.getText() + "=" + (a*b));
                 if (operation.equals("/"))
                     tabloField.setText(tabloField.getText() + "=" + (a/b));
+                if (operation.equals("^"))
+                    tabloField.setText(tabloField.getText() + "=" + (Math.pow(a,b)));
             }
         });
 
