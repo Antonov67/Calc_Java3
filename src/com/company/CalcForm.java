@@ -25,6 +25,8 @@ public class CalcForm extends JFrame{
     private JButton CEButton;
     private JButton pointButton;
     private JButton stepenButton;
+    private JButton korenButton;
+    private JButton minusNumButton;
     //наши переменные
     static String operation;
     static double a,b;
@@ -66,11 +68,11 @@ public class CalcForm extends JFrame{
                         isFinish = false;
                     }
                     aText += numberText;
-                    a = Double.parseDouble(aText);
+
                 }
                 else {
                     bText += numberText;
-                    b = Double.parseDouble(bText);
+
                 }
                 tabloField.setText(tabloField.getText() + numberText);
             }
@@ -88,6 +90,7 @@ public class CalcForm extends JFrame{
         a9Button.addActionListener(new NumberButtonActionListener("9"));
         a0Button.addActionListener(new NumberButtonActionListener("0"));
         pointButton.addActionListener(new NumberButtonActionListener("."));
+        minusNumButton.addActionListener(new NumberButtonActionListener("-"));
         //клавиши операций
         class OperationButtonActionListener implements ActionListener{
             String operationText;
@@ -107,10 +110,15 @@ public class CalcForm extends JFrame{
         umnogenieButton.addActionListener(new OperationButtonActionListener("*"));
         delenieButton.addActionListener(new OperationButtonActionListener("/"));
         stepenButton.addActionListener(new OperationButtonActionListener("^"));
+        korenButton.addActionListener(new OperationButtonActionListener('\u221A' + ""));
         //клавиша равно
         ravnoButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                if (aText.length() !=0)
+                    a = Double.parseDouble(aText);
+                if (bText.length() !=0)
+                    b = Double.parseDouble(bText);
                 number = 1;
                 isFinish = true;
                 aText = "";
@@ -125,9 +133,12 @@ public class CalcForm extends JFrame{
                     tabloField.setText(tabloField.getText() + "=" + (a/b));
                 if (operation.equals("^"))
                     tabloField.setText(tabloField.getText() + "=" + (Math.pow(a,b)));
+                if (operation.equals('\u221A'+ "") && a >= 0)
+                    tabloField.setText(tabloField.getText() + "=" + (Math.sqrt(a)));
             }
         });
-
+        //корень
+        korenButton.setText('\u221A' + "");
 
 
     }
